@@ -1,58 +1,35 @@
 function calculate() {
-    //Getting the inputs
-    var pipe_quantity = parseInt(document.getElementById("num1").value);
-    var elbow = parseInt(document.getElementById("num2").value);
-    var transection = parseInt(document.getElementById("num3").value);
-    var equaltee = parseInt(document.getElementById("num4").value);
-    var coupler = parseInt(document.getElementById("num5").value);
-    var rate = parseInt(document.getElementById("num6").value);
+    // Getting the inputs
+    const pipeQuantity = parseInt(document.getElementById("num1").value) || 0;
+    const elbowQuantity = parseInt(document.getElementById("num2").value) || 0;
+    const transectionQuantity = parseInt(document.getElementById("num3").value) || 0;
+    const equalTeeQuantity = parseInt(document.getElementById("num4").value) || 0;
+    const couplerQuantity = parseInt(document.getElementById("num5").value) || 0;
+    const rate = parseInt(document.getElementById("num6").value) || 0;
 
-    //convert nan to 0
-    pipe_quantity = pipe_quantity || 0;
-    elbow = elbow || 0;
-    transection = transection || 0;
-    equaltee = equaltee || 0;
-    coupler = coupler || 0;
-    rate = rate || 0;
-    
-    //rates
-    var pipe_rate = 990
-    var elbow_rate = 916
-    var transection_rate = 3108
-    var equaltee_rate = 900
-    var coupler_rate = 600
+    // Rates
+    const pipeRate = 990;
+    const elbowRate = 916;
+    const transectionRate = 3108;
+    const equalTeeRate = 900;
+    const couplerRate = 600;
+    const transportationCost = 3500;
+    const labourCost = 1000;
 
-    var transportation_cost = 3500
-    var labour_cost = 1000
+    // Calculation
+    const sellingPrice = pipeQuantity * rate;
+    const totalCost = (pipeQuantity * pipeRate) + (elbowQuantity * elbowRate) + (transectionQuantity * transectionRate) + 
+                      (equalTeeQuantity * equalTeeRate) + (couplerQuantity * couplerRate) + transportationCost + labourCost;
 
+    const totalProfit = sellingPrice - totalCost;
+    const profitPercent = ((totalProfit * 100) / totalCost).toFixed(2);
 
-    //calculation
-    var selling_price = (pipe_quantity*rate);
-    var total_cost = (pipe_quantity*pipe_rate) + (elbow*elbow_rate) + (transection*transection_rate) + (equaltee*equaltee_rate) + (coupler*coupler_rate) + transportation_cost + labour_cost;
+    const priceFor30 = totalCost * 1.3;
+    const rateFor30 = (priceFor30 / pipeQuantity).toFixed(2);
 
-
-    var total_profit = selling_price-total_cost;
-    var profit_percent = (total_profit*100)/total_cost;
-    profit_percent = profit_percent.toFixed(2);
-
-    var price_for30 = total_cost*1.3;
-    var rate_for30 = price_for30/pipe_quantity;
-    rate_for30 = rate_for30.toFixed(2);
-
-
-
-
-    document.getElementById("output1").innerHTML = "Total Selling Price at Rate: ₹" + selling_price;
-    document.getElementById("output2").innerHTML = "Total Cost of Pipes: ₹" + total_cost;
-    document.getElementById("output3").innerHTML = "Total Profit: ₹" + total_profit + " (" + profit_percent +"% Profit)";
-    document.getElementById("output4").innerHTML = "Rate for 30% Profit: ₹" + rate_for30;
-
-
-
-
-
-
-    
-
-
+    // Output
+    document.getElementById("output1").innerHTML = `Total Selling Price at Rate: ₹${sellingPrice}`;
+    document.getElementById("output2").innerHTML = `Total Cost of Pipes: ₹${totalCost}`;
+    document.getElementById("output3").innerHTML = `Total Profit: ₹${totalProfit} (${profitPercent}% Profit)`;
+    document.getElementById("output4").innerHTML = `Rate for 30% Profit: ₹${rateFor30}`;
 }
