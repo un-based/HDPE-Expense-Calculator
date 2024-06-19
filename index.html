@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <label for="num1" class="col-sm-2 control-label">Pipe Quantity:</label>
+        <div class="col-sm-10">
+          <input type="number" id="num1" name="num1" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="num2" class="col-sm-2 control-label">90° Elbow Quantity:</label>
+        <div class="col-sm-10">
+          <input type="number" id="num2" name="num2" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="num3" class="col-sm-2 control-label">Transection Fitting:</label>
+        <div class="col-sm-10">
+          <input type="number" id="num3" name="num3" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="num4" class="col-sm-2 control-label">Equal Tee Quantity:</label>
+        <div class="col-sm-10">
+          <input type="number" id="num4" name="num4" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="num5" class="col-sm-2 control-label">Coupler/Socket Quantity:</label>
+        <div class="col-sm-10">
+          <input type="number" id="num5" name="num5" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="num6" class="col-sm-2 control-label">Rate:</label>
+        <div class="col-sm-10">
+          <input type="number" id="num6" name="num6" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input type="button" value="Calculate" class="btn btn-primary" onclick="calculate()">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <p id="output1" class="text-center"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <p id="output2" class="text-center"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <p id="output3" class="text-center"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <p id="output4" class="text-center"></p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
