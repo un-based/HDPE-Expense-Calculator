@@ -1,56 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pipe_Website</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pipe Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
+
 <body>
     <div class="container">
-        <form>
-            <div class="form-group">
-                <label for="num1" class="form-label">Pipe Quantity:</label>
-                <input type="number" id="num1" name="num1" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="num2" class="form-label">90° Elbow Quantity:</label>
-                <input type="number" id="num2" name="num2" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="num3" class="form-label">Transection Fitting:</label>
-                <input type="number" id="num3" name="num3" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="num4" class="form-label">Equal Tee Quantity:</label>
-                <input type="number" id="num4" name="num4" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="num5" class="form-label">Coupler/Socket Quantity:</label>
-                <input type="number" id="num5" name="num5" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="num6" class="form-label">Rate:</label>
-                <input type="number" id="num6" name="num6" class="form-control">
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-primary w-100" onclick="calculate()">Calculate</button>
-            </div>
-            <div class="form-group">
-                <p id="output1" class="text-center output"></p>
-            </div>
-            <div class="form-group">
-                <p id="output2" class="text-center output"></p>
-            </div>
-            <div class="form-group">
-                <p id="output3" class="text-center output"></p>
-            </div>
-            <div class="form-group">
-                <p id="output4" class="text-center output"></p>
-            </div>
-        </form>
+        <!-- Header -->
+        <header>
+            <h1>Pipe Calculator</h1>
+            <button id="settings-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="white" d="M19.739 12.832a1 1 0 0 0 .23.686l1.152 2.044a1 1 0 0 0 1.584.463l1.389-1.389a1 1 0 0 0 .001-1.414l-1.389-1.389a1 1 0 0 0-1.414-.001l-2.044 1.152a1 1 0 0 0-.686.231l-.194-2.103a1 1 0 0 0-.994-.888h-2.211a1 1 0 0 0-.994.888l-.194 2.103a1 1 0 0 0-.686-.231l-2.044-1.152a1 1 0 0 0-1.414.001l-1.389 1.389a1 1 0 0 0 .001 1.414l1.389 1.389a1 1 0 0 0 1.414-.001l2.044-1.152a1 1 0 0 0 .686-.231l.194 2.103a1 1 0 0 0 .994.888h2.211a1 1 0 0 0 .994-.888l.194-2.103zM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg> Settings</button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Input Section -->
+            <section id="input-section">
+                <h2>Input Values</h2>
+                <form id="calculator-form">
+                    <div class="input-group">
+                        <label for="pipeQuantity">Pipe Quantity:</label>
+                        <input type="number" id="pipeQuantity" value="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="elbowQuantity">90° Elbow Quantity:</label>
+                        <input type="number" id="elbowQuantity" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="transectionQuantity">Transection Fitting Quantity:</label>
+                        <input type="number" id="transectionQuantity" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="equalTeeQuantity">Equal Tee Quantity:</label>
+                        <input type="number" id="equalTeeQuantity" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="couplerQuantity">Coupler/Socket Quantity:</label>
+                        <input type="number" id="couplerQuantity" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="rate">Rate:</label>
+                        <input type="number" id="rate" value="0">
+                    </div>
+                     <div class="input-group">
+                        <label for="partyName">Name of Party:</label>
+                        <input type="text" id="partyName" placeholder="Enter party name">
+                    </div>
+                    <button type="button" id="calculate-btn">Calculate</button>
+                </form>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section">
+                <h2>Results</h2>
+                <p>Total Selling Price: ₹<span id="sellingPrice">0</span></p>
+                <p>Total Cost: ₹<span id="totalCost">5490</span></p>
+                <p>Total Profit: ₹<span id="totalProfit">-5490 (-100.00%)</span></p>
+                <p>Rate for 30% Profit: ₹<span id="profitRate">7137.00</span></p>
+                <button class="download-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="12 5 12 15 17 10"></polyline><path d="M17 10H3"></path></svg>
+                    Download PDF Report
+                </button>
+            </section>
+        </main>
+
+        <!-- Settings Page -->
+        <div id="settings-page" class="hidden">
+            <header>
+                <button id="back-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="white" d="M9.586 12.879l4.53-4.53a1 1 0 0 0-1.414-1.414l-5.237 5.237a1.001 1.001 0 0 0 0 1.414l5.237 5.237a1 1 0 0 0 1.414-1.414l-4.53-4.53H19a1 1 0 1 0 0-2H9.586z"/></svg> Back</button>
+                <h2>Rate Settings</h2>
+                <div></div>
+            </header>
+            <form id="settings-form">
+                <div class="input-group">
+                    <label for="pipeRate">Pipe Rate:</label>
+                    <input type="number" id="pipeRate" value="990">
+                </div>
+                <div class="input-group">
+                    <label for="elbowRate">Elbow Rate:</label>
+                    <input type="number" id="elbowRate" value="916">
+                </div>
+                <div class="input-group">
+                    <label for="transectionRate">Transection Rate:</label>
+                    <input type="number" id="transectionRate" value="3108">
+                </div>
+                <div class="input-group">
+                    <label for="equalTeeRate">Equal Tee Rate:</label>
+                    <input type="number" id="equalTeeRate" value="900">
+                </div>
+                <div class="input-group">
+                    <label for="couplerRate">Coupler Rate:</label>
+                    <input type="number" id="couplerRate" value="600">
+                </div>
+                <div class="input-group">
+                    <label for="transportationCost">Transportation Cost:</label>
+                    <input type="number" id="transportationCost" value="3500">
+                </div>
+                <div class="input-group">
+                    <label for="labourCost">Labour Cost:</label>
+                    <input type="number" id="labourCost" value="1000">
+                </div>
+                <button type="button" id="save-settings-btn">Save Changes</button>
+            </form>
+        </div>
     </div>
-    <script src="script.js"></script>
 </body>
+
 </html>
