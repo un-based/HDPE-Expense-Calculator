@@ -20,6 +20,7 @@ body {
     overflow: hidden;
 }
 
+/* Header Styles */
 header {
     background-color: #2D2D2D;
     color: white;
@@ -31,11 +32,11 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 28px;
 }
 
 header button {
-    background-color: #3F51B5;
+    background-color: #00164E;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -52,7 +53,23 @@ header button svg {
 }
 
 header button:hover {
-    background-color: #303F9F;
+    background-color: #00164E;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: auto;
+}
+
+#pipeToggle {
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: #f37021;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
 /* Main Content Styles */
@@ -60,22 +77,19 @@ header button:hover {
     display: flex;
     padding: 20px;
     gap: 20px;
+    flex-direction: column;
 }
 
 #input-section,
 #results-section {
-    flex: 1;
     background-color: #2D2D2D;
     padding: 20px;
     border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#input-section h2,
-#results-section h2 {
-    margin-top: 0;
-    font-size: 20px;
-}
-
+/* Input Groups */
 .input-group {
     margin-bottom: 15px;
 }
@@ -87,7 +101,7 @@ header button:hover {
 }
 
 .input-group input {
-    width: 95%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #424242;
     border-radius: 4px;
@@ -95,26 +109,29 @@ header button:hover {
     color: white;
 }
 
-#results-section p {
-    font-size: 16px;
-    margin-bottom: 10px;
+/* Hidden Class */
+.hidden {
+    display: none !important;
 }
 
-/* Calculate Button Style */
+/* Buttons */
+button {
+    transition: background-color 0.3s ease;
+}
+
 #calculate-btn {
-    background-color: #4CAF50;
+    background-color: #f37021;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
-    width: 95%;
+    width: 100%;
 }
 
 #calculate-btn:hover {
-    background-color: #388E3C;
+    background-color: #f37021;
 }
 
 /* Settings Page Styles */
@@ -212,9 +229,10 @@ header button:hover {
     background-color: #303F9F;
 }
 
+
 /* Download Button Style */
 .download-button {
-    background-color: #2196F3;
+    background-color: #00164E;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -233,111 +251,56 @@ header button:hover {
 }
 
 .download-button:hover {
-    background-color: #1976D2;
+    background-color: #00164E;
 }
+
+/* Add to styles.css */
+#settings-2inch,
+#settings-3inch {
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
 
 /* Mobile Optimization */
 @media (max-width: 768px) {
-    body {
-        display: block;
-        min-height: auto;
-        padding: 10px;
-        align-items: stretch;
-    }
-
-    .container {
-        width: 100%;
-        margin: 0;
-        border-radius: 0;
-        min-height: 100vh;
-    }
-
     header {
         flex-direction: column;
         align-items: stretch;
-        padding: 15px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
+        gap: 10px;
     }
-
-    header h1 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        text-align: center;
+    
+    .toggle-container {
+        width: 100%;
+        margin: 0;
     }
-
+    
+    #pipeToggle {
+        width: 100%;
+    }
+    
     .content {
-        flex-direction: column;
-        padding: 10px;
-        gap: 15px;
-    }
-
-    #input-section,
-    #results-section {
-        width: 100%;
         padding: 15px;
-        box-sizing: border-box;
-    }
-
-    #input-section h2,
-    #results-section h2 {
-        font-size: 1.2rem;
-    }
-
-    .input-group {
-        margin-bottom: 12px;
-    }
-
-    .input-group input {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    /* Settings Page Mobile Fixes */
-    #settings-page {
-        padding: 15px;
-        justify-content: flex-start;
-    }
-
-    #settings-page form {
-        width: 100%;
-        padding: 15px;
-        box-sizing: border-box;
-    }
-
-    /* Ensure buttons don't overflow */
-    button {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        width: 100vw;
-        min-width: 320px;
-    }
-
-    header button {
         width: 100%;
-        justify-content: center;
+        border-radius: 0;
     }
-
-    .input-group label {
+    
+    .input-group input {
         font-size: 14px;
+        padding: 8px;
     }
-
-    #results-section p {
-        font-size: 14px;
-    }
-
-    /* Prevent PDF button text wrap */
-    .download-button {
+    
+    #calculate-btn {
         font-size: 14px;
         padding: 10px 15px;
     }
 }
-
-
