@@ -494,5 +494,6 @@ function generatePDF(
 
     // Save PDF
     doc.save("quotation.pdf");
+    location.reload();
 }
 
