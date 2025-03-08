@@ -162,47 +162,6 @@ calculateBtn.addEventListener("click", (event) => {
     console.log(
         "Calculation Done. Ready for download : " + "Pipe is " + is2Inch
     )
-
-
-    // // Generate PDF
-    // downloadButton.addEventListener("click", () => {
-    //     if(is2Inch){
-    //         console.log("Sending generate PDF 2 inch")
-    //         generatePDF(
-    //             is2Inch,
-    //             pipeQuantity,
-    //             rate,
-    //             partyName,
-    //             address,
-    //             quotationNum,
-    //             GSTNum,
-    //             sellingPrice,
-    //         );
-    //     }
-    //     else{
-    //         console.log("Sending generate PDF 3 inch")
-    //         generatePDF(
-    //             is2Inch,
-    //             pipeQuantity3,
-    //             rate3,
-    //             partyName3,
-    //             address3,
-    //             quotationNum3,
-    //             GSTNum3,
-    //             sellingPrice
-    //         );
-    //     }
-    //     // generatePDF(
-    //     //     is2Inch,
-    //     //     pipeQuantity,
-    //     //     rate,
-    //     //     partyName,
-    //     //     address,
-    //     //     quotationNum,
-    //     //     GSTNum,
-    //     //     sellingPrice,
-    //     // );
-    // });
     function debounce(func, wait) {
         let timeout;
         return function(...args) {
@@ -249,18 +208,6 @@ backButton.addEventListener("click", () => {
     settingsPage.classList.add("hidden");
 });
 
-// Populate settings with default values
-document.getElementById("pipeRate").value = pipeRate;
-document.getElementById("elbowRate").value = elbowRate;
-document.getElementById("transectionRate").value = transectionRate;
-document.getElementById("equalTeeRate").value = equalTeeRate;
-document.getElementById("couplerRate").value = couplerRate;
-document.getElementById("pipeRate3").value = pipeRate3;
-document.getElementById("transectionRate3").value = transectionRate3;
-document.getElementById("couplerRate3").value = couplerRate3;
-document.getElementById("stubFlangeRate3").value = stubFlangeRate3;
-document.getElementById("transportationCost").value = transportationCost;
-document.getElementById("labourCost").value = labourCost;
 
 
 
@@ -493,7 +440,7 @@ function generatePDF(
     addFooter(doc,125,230,70,50);
 
     // Save PDF
-    doc.save("quotation.pdf");
+    doc.save("quotation_hdpe.pdf");
     location.reload();
 }
 
