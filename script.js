@@ -441,6 +441,6 @@ function generatePDF(
 
     // Save PDF
     doc.save("quotation_hdpe.pdf");
-    location.reload();
+    // location.reload();
 }
 
