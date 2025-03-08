@@ -17,8 +17,8 @@ let elbowRate3 = 1500;
 let nutboltRate3 = 100;
 
 
-let transportationCost = 3500;
-let labourCost = 1000;
+let transportationCost;
+let labourCost;
 
 
 // DOM Elements
